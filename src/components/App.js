@@ -1,13 +1,13 @@
 'use strict'
 
 import React from 'react';
-import Counter from './counter'
+import CounterContainer from './counterContainer'
 
 export default function App() {
 
     return (
         <div>
-            <Counter />
+            <CounterContainer />
         </div>
     );
 }
