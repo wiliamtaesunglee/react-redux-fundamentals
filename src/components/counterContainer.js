@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react'
 import Counter from "./counter";
-import { createStore } from "redux";
+import { connect } from 'react-redux'
 
 class CounterContainer extends PureComponent {
     constructor () {
@@ -8,24 +8,12 @@ class CounterContainer extends PureComponent {
         this.state = {
             counter: 0
         }
-
-        this.increment = () => { this.props.store.dispatch({type: 'INCREMENT'})}
-        this.decrement = () => { this.props.store.dispatch({type: 'DECREMENT'})}
-
-    }
-
-    componentDidMount() {
-        this.unsubscribe = this.props.store.subscribe(() => this.forceUpdate())
-    }
-
-    componentWillUnmount() {
-        this.unsubscribe()
     }
 
     render() {
-
+        console.log(this.props)
         return(
-            <Counter counter={this.props.store.getState()}
+            <Counter counter={this.props.counter}
             increment={this.increment}
             decrement={this.decrement}
             />
@@ -34,4 +22,13 @@ class CounterContainer extends PureComponent {
 
 }
 
-export default CounterContainer
+const mapStateToProps = state => ({
+        counter: state
+})
+
+const mapDispatchToProps = dispatch => ({
+        increment: () => { dispatch({type: 'INCREMENT'})},
+        decrement: () => { dispatch({type: 'DECREMENT'})}
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CounterContainer)

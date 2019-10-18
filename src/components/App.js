@@ -1,7 +1,7 @@
 'use strict'
-
 import React from 'react';
 import CounterContainer from './counterContainer'
+import { Provider } from 'react-redux'
 import { createStore } from "redux";
 
 const counter = (state = 0, action) => {
@@ -15,7 +15,9 @@ const counter = (state = 0, action) => {
 const store = createStore(counter)
 
 const App = () => (
-       <CounterContainer store={store}/>
+       <Provider store={store}>
+         <CounterContainer/>
+       </Provider>
 )
 
 export default App

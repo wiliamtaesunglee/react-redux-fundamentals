@@ -1,3 +1,5 @@
+'use strict'
+
 module.exports = {
     module: {
         rules: [
@@ -10,4 +12,6 @@ module.exports = {
             },
         ],
     },
+    entry: ['react-hot-loader/patch', './src'],
+
 };
