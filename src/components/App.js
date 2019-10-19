@@ -3,6 +3,7 @@ import React from 'react';
 import CounterContainer from './counterContainer'
 import { Provider } from 'react-redux'
 import { createStore } from "redux";
+import { hot } from 'react-hot-loader'
 
 const counter = (state = 0, action) => {
        switch (action.type) {
@@ -20,5 +21,5 @@ const App = () => (
        </Provider>
 )
 
-export default App
+export default hot(module)(App)
 
